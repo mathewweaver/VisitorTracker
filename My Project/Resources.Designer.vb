@@ -81,7 +81,10 @@ Namespace My.Resources
         '''&lt;script type=&quot;text/javascript&quot;&gt;//&lt;![CDATA[ 
         '''
         '''$(function () {
-        '''    $.getJSON(&apos;http://www.highcharts.com/samples/data/jsonp.php?filename=aapl-v.json&amp;callb [rest of string was truncated]&quot;;.
+        '''
+        '''    // create the chart
+        '''    $(&apos;#container&apos;).highcharts(&apos;StockChart&apos;, {
+        '''        chart:  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property ChartTest() As String
             Get
