@@ -59,37 +59,5 @@ Namespace My.Resources
                 resourceCulture = value
             End Set
         End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to &lt;html&gt;&lt;head&gt;
-        '''  &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
-        '''  &lt;title&gt; - jsFiddle demo&lt;/title&gt;
-        '''  
-        '''  &lt;script type=&quot;text/javascript&quot; src=&quot;http://code.jquery.com/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
-        '''  
-        '''  
-        '''  
-        '''  
-        '''  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/css/result-light.css&quot;&gt;
-        '''  
-        '''  &lt;style type=&quot;text/css&quot;&gt;
-        '''    
-        '''  &lt;/style&gt;
-        '''  
-        '''
-        '''
-        '''&lt;script type=&quot;text/javascript&quot;&gt;//&lt;![CDATA[ 
-        '''
-        '''$(function () {
-        '''
-        '''    // create the chart
-        '''    $(&apos;#container&apos;).highcharts(&apos;StockChart&apos;, {
-        '''        chart:  [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property ChartTest() As String
-            Get
-                Return ResourceManager.GetString("ChartTest", resourceCulture)
-            End Get
-        End Property
     End Module
 End Namespace

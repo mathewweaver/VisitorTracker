@@ -1,14 +1,15 @@
 
-alter FUNCTION fn_visitor 
+alter FUNCTION fn_volunteer 
 (
-	@dt datetime2(7) = null
+   @vo_id int
+	,@dt datetime2(7) = null
 )
 RETURNS 
 @vi TABLE 
 (
 	 start_dt datetime
   ,end_dt datetime
-  ,cnt int 
+  ,hrs real 
 )
 AS
 BEGIN
@@ -17,8 +18,9 @@ BEGIN
   if @dt is null
     set @dt = (select max(c.dt) 
                  from dbo.st_calendar c 
-                where c.dt < (select min(v.dt) 
-                                from dbo.dt_visitor v));
+                where c.dt < (select min(vt.start_dt) 
+                                from dbo.dt_volunteer_time vt
+                               where vt.vo_id = @vo_id));
 
   -- compute hourly segments
   insert @vi ( start_dt, end_dt )
@@ -32,7 +34,7 @@ BEGIN
 	
   -- compute count
   update @vi set
-      cnt = coalesce((select sum(cnt) from dbo.dt_visitor v where v.dt between i.start_dt and i.end_dt),0)
+      hrs = coalesce((select sum(datediff(minute,vt.start_dt,vt.stop_dt)) from dbo.dt_volunteer_time vt where vt.vo_id = @vo_id and vt.start_dt between i.start_dt and i.end_dt),0) / 60.0
     from @vi i;
 
 	RETURN 

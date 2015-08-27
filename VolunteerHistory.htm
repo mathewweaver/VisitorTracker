@@ -1,0 +1,99 @@
+﻿<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Visitor History for %volunteer%</title>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+  <style type="text/css">
+
+  </style>
+  
+  <script type="text/javascript">
+//<![CDATA[
+
+$(function () {
+
+    // create the chart
+    $('#container').highcharts('StockChart', {
+        chart: {
+            alignTicks: false,
+            zoomType: 'x'
+        },
+        plotOptions: {
+          series: {
+            connectNulls: false,
+            dataGrouping: {
+              approximation: 'sum',
+              enabled: true,
+              forced: true
+            }
+          }
+        },
+        tooltip: {
+          valueDecimals: 1,
+          valueSuffix: ' hrs'
+        },
+        rangeSelector: {
+            allButtonsEnabled: true,
+            selected: 0,
+            buttons: [{
+	            type: 'day',
+	            count: 1,
+	            text: '1d'
+            }, {
+	            type: 'week',
+	            count: 1,
+	            text: '1w'
+            }, {
+	            type: 'month',
+	            count: 1,
+	            text: '1m'
+            }, {
+	            type: 'month',
+	            count: 6,
+	            text: '6m'
+            }, {
+	            type: 'ytd',
+	            text: 'YTD'
+            }, {
+	            type: 'all',
+	            text: 'All'
+            }]
+        },
+
+        title: {
+            text: 'Volunteer History for %volunteer%'
+        },
+        xAxis: {
+          type: 'datetime'
+        },
+
+        series: [{
+            type: 'column',
+            name: '%volunteer%',
+            data: %data%
+
+        }]
+    });
+});
+//]]>
+
+  </script>
+
+
+</head>
+<body>
+  <script src="http://code.highcharts.com/stock/highstock.js"></script>
+  <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
+
+
+  <div id="container" style="height: 400px" data-highcharts-chart="0">
+
+  </div>
+  
+
+</body>
+</html>
